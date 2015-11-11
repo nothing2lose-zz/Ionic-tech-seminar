@@ -54,5 +54,19 @@ app.use(function(req, res, next) {
 //  });
 //});
 
+// DB
+var getDBURI = function() {
+  return 'mongodb://localhost/dkopenchat';
+}
+
+var mongoose = require('mongoose');
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function (callback) {
+  console.log("db connected successfully");
+});
+mongoose.connect( getDBURI() );
+
+
 
 module.exports = app;
