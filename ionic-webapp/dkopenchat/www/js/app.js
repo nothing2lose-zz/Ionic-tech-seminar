@@ -64,6 +64,28 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 
 angular.module('starter.services', [])
+// global alert
+.factory('AlertView', function($ionicPopup, $rootScope, $timeout) {
+  var show = function(msg, $scope) {
+    $scope = $scope || $rootScope.$new();
+    console.log(msg);
+    var alert = $ionicPopup.alert({
+      scope: $scope,
+      title: msg,
+      animation: 'slide-in-up'
+    });
+    alert.then(function(modal) {
+      $scope.modal = modal;
+      return modal;
+    });
+    $timeout(function() {
+      alert.close();
+    }, 1000);
+  }
+
+  return { show: show};
+})
+
 // API
 .factory('apiService', function ($http) {
   var cachedItems = [];

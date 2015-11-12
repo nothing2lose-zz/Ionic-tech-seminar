@@ -12,7 +12,7 @@
     </ion-refresher>
 
     <ion-list>
-      <ion-item ng-repeat="room in rooms" class= "item-remove-animate item-icon-right item">
+      <ion-item ng-repeat="room in rooms" class= "item-remove-animate item-icon-right item item-select" href="{{room.url}}", target="_blank">
         {{room.name}}
         <ion-option-button class="button-positive" ng-click="doDeleteRoom($index)">삭제</ion-option-button>
       </ion-item>
