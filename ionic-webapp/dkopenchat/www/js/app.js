@@ -95,6 +95,7 @@ angular.module('starter.services', [])
     }
     return {}
   }
+  var basePath = "http://openchat.kr.pe";
   var myService = {
     reset: function() {
       cachedItems.length = 0;
@@ -103,7 +104,7 @@ angular.module('starter.services', [])
       return cachedItems;
     },
     getCategories: function() {
-      var promise = $http.get('/api/categories').then(function (response) {
+      var promise = $http.get(basePath + '/api/categories').then(function (response) {
         return response.data;
       });
       return promise;
@@ -115,7 +116,7 @@ angular.module('starter.services', [])
       var promise;
       //if ( !promise ) {
       // $http returns a promise, which has a then function, which also returns a promise
-      promise = $http.get('/api/rooms',{ params: { category_type: categoryType, start_at: last.created, limit: limit  } }).then(function (response) {
+      promise = $http.get(basePath + '/api/rooms',{ params: { category_type: categoryType, start_at: last.created, limit: limit  } }).then(function (response) {
         // The then function here is an opportunity to modify the response
         //console.log(response);
         // The return value gets picked up by the then in the controller.
@@ -128,14 +129,14 @@ angular.module('starter.services', [])
       return promise;
     },
     postRoom: function(name, url, categoryType, userId) {
-      var promise = $http.post('/api/rooms', { name: name, url: url, category_type: categoryType, author_id: userId }).then(function (response) {
+      var promise = $http.post(basePath + '/api/rooms', { name: name, url: url, category_type: categoryType, author_id: userId }).then(function (response) {
         cachedItems.insert(0, response.data);
         return response.data;
       });
       return promise;
     },
     deleteRoom: function(room) {
-      var promise = $http.delete('/api/rooms/' + room._id).then(function (response) {
+      var promise = $http.delete(basePath + '/api/rooms/' + room._id).then(function (response) {
         var index = cachedItems.indexOf(room)
         cachedItems.splice(index, 1);
         return response.data;
