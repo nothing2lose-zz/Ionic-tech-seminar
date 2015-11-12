@@ -95,7 +95,7 @@ angular.module('starter.services', [])
     }
     return {}
   }
-  var basePath = "http://openchat.kr.pe";
+  var basePath = "http://openchat.kr.pe:4000";
   var myService = {
     reset: function() {
       cachedItems.length = 0;
