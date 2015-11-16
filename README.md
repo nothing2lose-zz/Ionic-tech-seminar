@@ -8,6 +8,7 @@ $>npm install -g cordova ionic
 
 $>cd ionic-webapp
 $>cd dkopenchat
+$>ionic platform ios
 
 $>ionic build ios
 $>ionic emulate ios
@@ -18,9 +19,9 @@ $>ionic emulate ios
 
 ````
 $>npm install
-````
-### run mongodb
-````
+
+run mongodb
+
 $>npm start
 ````
 - connect to 'localhost:4000'
